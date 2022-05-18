@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Modal from 'react-modal';
 import Basket from '../components/Basket';
 import ProductsList from '../components/ProductsList';
+import Title from '../components/Title';
 
 const MainPage = () => {
   const [products, setProducts] = useState([]);
@@ -41,7 +42,7 @@ const MainPage = () => {
 
   return (
     <>
-      <h1>E-shop</h1>
+      <Title>E-shop</Title>
       <Modal
         isOpen={isModalOpen}
         ariaHideApp={false}
@@ -61,12 +62,17 @@ const MainPage = () => {
         <button onClick={toggleModal}>OK</button>
       </Modal>
       <p>Welcome {name}!!</p>
-      <ProductsList
-        products={products}
-        onAddToBasketClick={onAddToBasketClick}
-      />
-
-      <Basket basketItems={basketItems} />
+      <div className='main-container'>
+        <div className='product-grid'>
+          <ProductsList
+            products={products}
+            onAddToBasketClick={onAddToBasketClick}
+          />
+        </div>
+        <div className='basket'>
+          <Basket basketItems={basketItems} />
+        </div>
+      </div>
     </>
   );
 };

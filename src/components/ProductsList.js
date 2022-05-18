@@ -10,7 +10,11 @@ const ProductsList = ({ products, onAddToBasketClick }) => {
       />
     );
   });
-  return <ul>{productNodes}</ul>;
+  return (
+    <ul>
+      <div className='products-container'>{productNodes} </div>
+    </ul>
+  );
 };
 
 export default ProductsList;
