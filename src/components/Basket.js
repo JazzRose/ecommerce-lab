@@ -5,6 +5,7 @@ import BasketItem from './BasketItem';
 const Basket = ({ basketItems, clearbasket }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [totalPurchased, setTotalPurchased] = useState(0);
+  const [discount, setDiscount] = useState('');
 
   const basketNodes = basketItems.map((product, index) => {
     return <BasketItem product={product} key={index} />;
@@ -22,6 +23,7 @@ const Basket = ({ basketItems, clearbasket }) => {
 
   const handlePay = () => {
     setIsModalOpen(!isModalOpen);
+    setTotalPurchased(0);
     clearbasket();
   };
 
@@ -30,6 +32,28 @@ const Basket = ({ basketItems, clearbasket }) => {
     (previousValue, currentValue) => previousValue + currentValue,
     totalPurchased
   );
+
+  const handleInput = (e) => {
+    setDiscount(e.target.value);
+  };
+
+  const applyDiscount = () => {
+    let newTotal = 0;
+    if (discount === 'SAN20') {
+      newTotal = totalPurchased * 0.8;
+      const toHide = document.getElementById('discount-btn');
+      toHide.classList.add('hidden');
+    } else if (discount === 'JAZZ30') {
+      newTotal = totalPurchased * 0.7;
+      const toHide = document.getElementById('discount-btn');
+      toHide.classList.add('hidden');
+    } else {
+      newTotal = totalPurchased;
+    }
+    setTotalPurchased(newTotal);
+
+    setDiscount('');
+  };
 
   return (
     <div>
@@ -40,9 +64,20 @@ const Basket = ({ basketItems, clearbasket }) => {
       >
         <h2>Checkout</h2>
         <ul>{basketNodes}</ul>
-        <p>Total Purchase: {totalPurchased}</p>
+        <p>Total Purchase: £{totalPurchased.toFixed(2)}</p>
         <button onClick={backToShop}>Back to Shop</button>
         <button onClick={handlePay}>Pay</button>
+        <br></br>
+        <label>Discount:</label>
+        <input
+          type='text'
+          placeholder='Discount Code'
+          onChange={handleInput}
+          value={discount}
+        ></input>
+        <button onClick={applyDiscount} id='discount-btn'>
+          Apply Discount
+        </button>
       </Modal>
       <h2>Basket</h2>
       <ul>{basketNodes}</ul>
