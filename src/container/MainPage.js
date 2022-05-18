@@ -40,6 +40,8 @@ const MainPage = () => {
     setName(e.target.value);
   };
 
+  const clearbasket = () => setBasketItems([]);
+
   return (
     <>
       <Title>E-shop</Title>
@@ -70,7 +72,7 @@ const MainPage = () => {
           />
         </div>
         <div className='basket'>
-          <Basket basketItems={basketItems} />
+          <Basket basketItems={basketItems} clearbasket={clearbasket} />
         </div>
       </div>
     </>

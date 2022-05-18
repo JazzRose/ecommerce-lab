@@ -4,7 +4,7 @@ const Product = ({ product, onAddToBasketClick }) => {
     <div className='product-card'>
       <li className='card-content'>
         <h5>{product.title}</h5>
-        <img width='100px' src={product.image} />
+        <img width='100px' src={product.image} alt='product detailed' />
         <p>£{product.price}</p>
         <p>User rating: {product.rating.rate}</p>
 
