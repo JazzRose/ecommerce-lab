@@ -12,11 +12,13 @@ ul {
   justify-content: space-around;
 }
 .product-card {
-  border-style: double;
+  border-style: solid;
   border-color: black;
   width: 20%;
   margin: 1%;
   padding: 1%;
+  border-radius: 2%;
+  box-shadow: 10px 10px;
 
 }
 
@@ -35,9 +37,21 @@ ul {
 }
 
 .basket{
-  width: 30%;
+  width: 25%;
+  padding: 1%;
+  margin-top: 30px;
+  margin-left: 10px;
+  border-style: solid;
+  border-color: black;
+  border-radius: 1vw;
+  box-shadow: 10px 10px;
 }
 
 .hidden {
   display: none;
+}
+
+.welcome {
+  text-align: center;
+  font-size: xx-large;
 }

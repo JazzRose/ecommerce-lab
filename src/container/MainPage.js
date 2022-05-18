@@ -63,7 +63,7 @@ const MainPage = () => {
         <br></br>
         <button onClick={toggleModal}>OK</button>
       </Modal>
-      <p>Welcome {name}!!</p>
+      <p className='welcome'>Welcome {name}!!</p>
       <div className='main-container'>
         <div className='product-grid'>
           <ProductsList
